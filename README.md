@@ -82,7 +82,12 @@ CREATE TABLE complaints (
 );
 
 -- Insert some dummy departments
-INSERT INTO departments (department_name) VALUES ('Public Works'), ('Water & Sanitation'), ('Electricity');
+INSERT INTO departments (department_name) VALUES 
+('Roads & Public Works'), 
+('Electricity'), 
+('Water Supply'), 
+('Garbage & cleaning'), 
+('Street lights & parks');
 ```
 
 ### 6. Start the Server
