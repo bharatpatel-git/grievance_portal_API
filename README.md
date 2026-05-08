@@ -82,11 +82,11 @@ CREATE TABLE complaints (
 );
 
 -- Insert some dummy departments
-INSERT INTO departments (department_name) VALUES 
-('Roads & Public Works'), 
-('Electricity'), 
-('Water Supply'), 
-('Garbage & cleaning'), 
+INSERT INTO departments (department_name) VALUES
+('Roads & Public Works'),
+('Electricity'),
+('Water Supply'),
+('Garbage & cleaning'),
 ('Street lights & parks');
 ```
 
@@ -129,7 +129,3 @@ For detailed endpoint documentation, request payloads, and response formats, ple
 - `GET /api/complaints/track/:trackingNumber` - Track complaint status (Public)
 - `GET /api/complaints` - Get all complaints (Admin Only)
 - `PATCH /api/complaints/:id/status` - Update complaint status (Admin Only)
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
