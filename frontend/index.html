@@ -733,6 +733,7 @@
     </style>
   </head>
   <body>
+    <script src="config.js"></script>
     <header>
       <div class="logo">
         <div class="logo-emblem">🏛️</div>
@@ -988,7 +989,7 @@
     </footer>
 
     <script>
-      const API_BASE = "http://localhost:5000/api"; // ← Update port if yours differs
+      const API_BASE = `${API_BASE_URL}/api`;
 
       function getToken() {
         return sessionStorage.getItem("grv_token");

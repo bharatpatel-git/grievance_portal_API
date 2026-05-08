@@ -1,342 +1,392 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login — Jan Sampark</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --navy: #0D1F3C;
-            --gold: #C8973A;
-            --cream: #F7F3EC;
-            --white: #FFFFFF;
-            --muted: #6B7280;
-            --border: #E2D9CC;
-            --green: #1A6B45;
-            --red: #C0392B;
-        }
+      :root {
+        --navy: #0d1f3c;
+        --gold: #c8973a;
+        --cream: #f7f3ec;
+        --white: #ffffff;
+        --muted: #6b7280;
+        --border: #e2d9cc;
+        --green: #1a6b45;
+        --red: #c0392b;
+      }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--navy);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-        }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--navy);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
 
-        .login-wrap {
-            width: 100%;
-            max-width: 420px;
-        }
+      .login-wrap {
+        width: 100%;
+        max-width: 420px;
+      }
 
-        .login-logo {
-            text-align: center;
-            margin-bottom: 32px;
-        }
+      .login-logo {
+        text-align: center;
+        margin-bottom: 32px;
+      }
 
-            .login-logo .emblem {
-                font-size: 48px;
-                display: block;
-                margin-bottom: 12px;
-            }
+      .login-logo .emblem {
+        font-size: 48px;
+        display: block;
+        margin-bottom: 12px;
+      }
 
-            .login-logo h1 {
-                font-family: 'Playfair Display', serif;
-                color: var(--white);
-                font-size: 26px;
-                margin-bottom: 4px;
-            }
+      .login-logo h1 {
+        font-family: "Playfair Display", serif;
+        color: var(--white);
+        font-size: 26px;
+        margin-bottom: 4px;
+      }
 
-            .login-logo p {
-                color: var(--gold);
-                font-size: 11px;
-                letter-spacing: 0.14em;
-                text-transform: uppercase;
-                font-weight: 300;
-            }
+      .login-logo p {
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 300;
+      }
 
-        .login-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.3);
-        }
+      .login-card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+      }
 
-        .tab-row {
-            display: flex;
-            border-bottom: 2px solid var(--border);
-            margin-bottom: 28px;
-        }
+      .tab-row {
+        display: flex;
+        border-bottom: 2px solid var(--border);
+        margin-bottom: 28px;
+      }
 
-        .tab {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--muted);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.2s;
-        }
+      .tab {
+        flex: 1;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted);
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px;
+        transition: all 0.2s;
+      }
 
-            .tab.active {
-                color: var(--navy);
-                border-bottom-color: var(--gold);
-            }
+      .tab.active {
+        color: var(--navy);
+        border-bottom-color: var(--gold);
+      }
 
-        .panel {
-            display: none;
-        }
+      .panel {
+        display: none;
+      }
 
-            .panel.active {
-                display: block;
-            }
+      .panel.active {
+        display: block;
+      }
 
-        .form-group {
-            margin-bottom: 18px;
-        }
+      .form-group {
+        margin-bottom: 18px;
+      }
 
-        label {
-            display: block;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--navy);
-            margin-bottom: 7px;
-        }
+      label {
+        display: block;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--navy);
+        margin-bottom: 7px;
+      }
 
-        input {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            color: var(--navy);
-            background: var(--cream);
-            outline: none;
-            transition: border-color 0.2s;
-        }
+      input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1.5px solid var(--border);
+        border-radius: 8px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+        color: var(--navy);
+        background: var(--cream);
+        outline: none;
+        transition: border-color 0.2s;
+      }
 
-            input:focus {
-                border-color: var(--navy);
-                background: var(--white);
-            }
+      input:focus {
+        border-color: var(--navy);
+        background: var(--white);
+      }
 
-        .btn {
-            width: 100%;
-            padding: 13px;
-            border-radius: 8px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-            border: none;
-            background: var(--navy);
-            color: var(--white);
-            transition: all 0.2s;
-            margin-top: 4px;
-        }
+      .btn {
+        width: 100%;
+        padding: 13px;
+        border-radius: 8px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
+        background: var(--navy);
+        color: var(--white);
+        transition: all 0.2s;
+        margin-top: 4px;
+      }
 
-            .btn:hover {
-                background: #162d52;
-            }
+      .btn:hover {
+        background: #162d52;
+      }
 
-            .btn:disabled {
-                background: var(--muted);
-                cursor: not-allowed;
-            }
+      .btn:disabled {
+        background: var(--muted);
+        cursor: not-allowed;
+      }
 
-        .alert {
-            padding: 12px 14px;
-            border-radius: 8px;
-            font-size: 13px;
-            margin-bottom: 16px;
-            display: none;
-        }
+      .alert {
+        padding: 12px 14px;
+        border-radius: 8px;
+        font-size: 13px;
+        margin-bottom: 16px;
+        display: none;
+      }
 
-            .alert.show {
-                display: block;
-            }
+      .alert.show {
+        display: block;
+      }
 
-        .alert-error {
-            background: #FDF0EF;
-            border: 1px solid #F5BDB9;
-            color: var(--red);
-        }
+      .alert-error {
+        background: #fdf0ef;
+        border: 1px solid #f5bdb9;
+        color: var(--red);
+      }
 
-        .alert-success {
-            background: #EAF7F0;
-            border: 1px solid #A8DFC4;
-            color: var(--green);
-        }
+      .alert-success {
+        background: #eaf7f0;
+        border: 1px solid #a8dfc4;
+        color: var(--green);
+      }
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: rgba(255,255,255,0.5);
-            font-size: 13px;
-            text-decoration: none;
-        }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+        text-decoration: none;
+      }
 
-            .back-link:hover {
-                color: var(--gold);
-            }
+      .back-link:hover {
+        color: var(--gold);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <script src="config.js"></script>
     <div class="login-wrap">
-        <div class="login-logo">
-            <span class="emblem">🏛️</span>
-            <h1>Jan Sampark</h1>
-            <p>Grievance Redressal Portal</p>
+      <div class="login-logo">
+        <span class="emblem">🏛️</span>
+        <h1>Jan Sampark</h1>
+        <p>Grievance Redressal Portal</p>
+      </div>
+
+      <div class="login-card">
+        <div class="tab-row">
+          <div class="tab active" onclick="switchTab('login', this)">
+            Sign In
+          </div>
+          <div class="tab" onclick="switchTab('register', this)">Register</div>
         </div>
 
-        <div class="login-card">
-            <div class="tab-row">
-                <div class="tab active" onclick="switchTab('login', this)">Sign In</div>
-                <div class="tab" onclick="switchTab('register', this)">Register</div>
-            </div>
-
-            <!-- LOGIN PANEL -->
-            <div class="panel active" id="panel-login">
-                <div class="alert alert-error" id="login-error"></div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="login-email" placeholder="you@example.com" />
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="login-password" placeholder="••••••••"
-                           onkeydown="if(event.key==='Enter') doLogin()" />
-                </div>
-                <button class="btn" onclick="doLogin()" id="login-btn">Sign In →</button>
-            </div>
-
-            <!-- REGISTER PANEL -->
-            <div class="panel" id="panel-register">
-                <div class="alert alert-error" id="reg-error"></div>
-                <div class="alert alert-success" id="reg-success"></div>
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="reg-name" placeholder="Rahul Sharma" />
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="reg-email" placeholder="you@example.com" />
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="reg-password" placeholder="Min. 6 characters" />
-                </div>
-                <button class="btn" onclick="doRegister()" id="reg-btn">Create Account →</button>
-            </div>
+        <!-- LOGIN PANEL -->
+        <div class="panel active" id="panel-login">
+          <div class="alert alert-error" id="login-error"></div>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              id="login-email"
+              placeholder="you@example.com"
+            />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="••••••••"
+              onkeydown="if (event.key === 'Enter') doLogin();"
+            />
+          </div>
+          <button class="btn" onclick="doLogin()" id="login-btn">
+            Sign In →
+          </button>
         </div>
 
-        <a class="back-link" href="index.html">← Back to Citizen Portal</a>
+        <!-- REGISTER PANEL -->
+        <div class="panel" id="panel-register">
+          <div class="alert alert-error" id="reg-error"></div>
+          <div class="alert alert-success" id="reg-success"></div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="reg-name" placeholder="Rahul Sharma" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="reg-email" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Min. 6 characters"
+            />
+          </div>
+          <button class="btn" onclick="doRegister()" id="reg-btn">
+            Create Account →
+          </button>
+        </div>
+      </div>
+
+      <a class="back-link" href="index.html">← Back to Citizen Portal</a>
     </div>
 
     <script>
-  const API_BASE = 'http://localhost:5000/api';
+      const API_BASE = `${API_BASE_URL}/api`;
 
-  function switchTab(name, el) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('panel-' + name).classList.add('active');
-  }
-
-  async function doLogin() {
-    const email    = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value;
-    const errorEl  = document.getElementById('login-error');
-    const btn      = document.getElementById('login-btn');
-
-    if (!email || !password) { showErr(errorEl, 'Please enter email and password.'); return; }
-
-    btn.disabled = true; btn.textContent = 'Signing in…';
-    errorEl.classList.remove('show');
-
-    try {
-      const res  = await fetch(`${API_BASE}/auth/login`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-
-      if (!res.ok) { showErr(errorEl, data.message || 'Login failed.'); return; }
-
-      // Save token and user info to sessionStorage
-      sessionStorage.setItem('grv_token', data.token);
-      sessionStorage.setItem('grv_user',  JSON.stringify(data));
-
-      // Redirect based on role
-      if (data.role === 'Admin') {
-        window.location.href = 'admin.html';
-      } else {
-        window.location.href = 'index.html';
+      function switchTab(name, el) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".panel")
+          .forEach((p) => p.classList.remove("active"));
+        el.classList.add("active");
+        document.getElementById("panel-" + name).classList.add("active");
       }
-    } catch (err) {
-      showErr(errorEl, 'Cannot connect to server. Is the API running?');
-    } finally {
-      btn.disabled = false; btn.textContent = 'Sign In →';
-    }
-  }
 
-  async function doRegister() {
-    const fullName = document.getElementById('reg-name').value.trim();
-    const email    = document.getElementById('reg-email').value.trim();
-    const password = document.getElementById('reg-password').value;
-    const errEl    = document.getElementById('reg-error');
-    const okEl     = document.getElementById('reg-success');
-    const btn      = document.getElementById('reg-btn');
+      async function doLogin() {
+        const email = document.getElementById("login-email").value.trim();
+        const password = document.getElementById("login-password").value;
+        const errorEl = document.getElementById("login-error");
+        const btn = document.getElementById("login-btn");
 
-    if (!fullName || !email || !password) { showErr(errEl, 'All fields are required.'); return; }
-    if (password.length < 6) { showErr(errEl, 'Password must be at least 6 characters.'); return; }
+        if (!email || !password) {
+          showErr(errorEl, "Please enter email and password.");
+          return;
+        }
 
-    btn.disabled = true; btn.textContent = 'Creating account…';
-    errEl.classList.remove('show'); okEl.classList.remove('show');
+        btn.disabled = true;
+        btn.textContent = "Signing in…";
+        errorEl.classList.remove("show");
 
-    try {
-      const res  = await fetch(`${API_BASE}/auth/register`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ fullName, email, password })
-      });
-      const data = await res.json();
+        try {
+          const res = await fetch(`${API_BASE}/auth/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+          });
+          const data = await res.json();
 
-      if (!res.ok) { showErr(errEl, data.message || 'Registration failed.'); return; }
+          if (!res.ok) {
+            showErr(errorEl, data.message || "Login failed.");
+            return;
+          }
 
-      okEl.textContent = 'Account created! You can now sign in.';
-      okEl.classList.add('show');
-      // Switch to login tab after 1.5 seconds
-      setTimeout(() => switchTab('login',
-        document.querySelector('.tab')), 1500);
-    } catch (err) {
-      showErr(errEl, 'Cannot connect to server.');
-    } finally {
-      btn.disabled = false; btn.textContent = 'Create Account →';
-    }
-  }
+          // Save token and user info to sessionStorage
+          sessionStorage.setItem("grv_token", data.token);
+          sessionStorage.setItem("grv_user", JSON.stringify(data));
 
-  function showErr(el, msg) {
-    el.textContent = msg;
-    el.classList.add('show');
-  }
+          // Redirect based on role
+          if (data.role === "Admin") {
+            window.location.href = "admin.html";
+          } else {
+            window.location.href = "index.html";
+          }
+        } catch (err) {
+          showErr(errorEl, "Cannot connect to server. Is the API running?");
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Sign In →";
+        }
+      }
+
+      async function doRegister() {
+        const fullName = document.getElementById("reg-name").value.trim();
+        const email = document.getElementById("reg-email").value.trim();
+        const password = document.getElementById("reg-password").value;
+        const errEl = document.getElementById("reg-error");
+        const okEl = document.getElementById("reg-success");
+        const btn = document.getElementById("reg-btn");
+
+        if (!fullName || !email || !password) {
+          showErr(errEl, "All fields are required.");
+          return;
+        }
+        if (password.length < 6) {
+          showErr(errEl, "Password must be at least 6 characters.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Creating account…";
+        errEl.classList.remove("show");
+        okEl.classList.remove("show");
+
+        try {
+          const res = await fetch(`${API_BASE}/auth/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ fullName, email, password }),
+          });
+          const data = await res.json();
+
+          if (!res.ok) {
+            showErr(errEl, data.message || "Registration failed.");
+            return;
+          }
+
+          okEl.textContent = "Account created! You can now sign in.";
+          okEl.classList.add("show");
+          // Switch to login tab after 1.5 seconds
+          setTimeout(
+            () => switchTab("login", document.querySelector(".tab")),
+            1500,
+          );
+        } catch (err) {
+          showErr(errEl, "Cannot connect to server.");
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Create Account →";
+        }
+      }
+
+      function showErr(el, msg) {
+        el.textContent = msg;
+        el.classList.add("show");
+      }
     </script>
-</body>
+  </body>
 </html>
