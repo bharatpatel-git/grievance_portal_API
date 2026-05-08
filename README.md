@@ -20,22 +20,27 @@ A robust Node.js & Express API backend for a Civic Grievance/Complaint Portal. I
 ## 📦 Installation & Setup
 
 ### 1. Prerequisites
+
 - [Node.js](https://nodejs.org/) installed (v16+ recommended).
 - [PostgreSQL](https://www.postgresql.org/) database installed and running.
 
 ### 2. Clone the Repository
+
 ```bash
-git clone https://github.com/bharatpatel-git/grievance_portal_API/
+git clone https://github.com/bharatpatel-git/grievance_portal_API
 cd grievance_portal_API
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 4. Environment Variables
+
 Create a `.env` file in the root directory and add the following configurations:
+
 ```env
 PORT=5000
 DB_USER=your_postgres_username
@@ -47,6 +52,7 @@ JWT_SECRET=your_super_secret_jwt_key
 ```
 
 ### 5. Database Setup
+
 Create a PostgreSQL database and execute the following SQL commands to create the necessary tables:
 
 ```sql
@@ -80,16 +86,20 @@ INSERT INTO departments (department_name) VALUES ('Public Works'), ('Water & San
 ```
 
 ### 6. Start the Server
+
 For development (with hot-reload):
+
 ```bash
 npm run dev
 ```
 
 For production:
+
 ```bash
 npm start
 ```
-*The server should now be running at `http://localhost:5000`.*
+
+_The server should now be running at `http://localhost:5000`._
 
 ---
 
@@ -100,17 +110,21 @@ For detailed endpoint documentation, request payloads, and response formats, ple
 ### Quick Endpoint Overview:
 
 **Auth:**
+
 - `POST /api/auth/register` - Create a new citizen account
 - `POST /api/auth/login` - Authenticate and get JWT
 
 **Departments:**
+
 - `GET /api/departments` - List all departments
 
 **Complaints:**
+
 - `POST /api/complaints` - Submit a complaint (Requires Auth)
 - `GET /api/complaints/track/:trackingNumber` - Track complaint status (Public)
 - `GET /api/complaints` - Get all complaints (Admin Only)
 - `PATCH /api/complaints/:id/status` - Update complaint status (Admin Only)
 
 ## 🤝 Contributing
+
 Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
