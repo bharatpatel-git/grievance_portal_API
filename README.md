@@ -25,7 +25,7 @@ A robust Node.js & Express API backend for a Civic Grievance/Complaint Portal. I
 
 ### 2. Clone the Repository
 ```bash
-git clone <your-github-repo-url>
+git clone https://github.com/bharatpatel-git/grievance_portal_API/
 cd grievance_portal_API
 ```
 
