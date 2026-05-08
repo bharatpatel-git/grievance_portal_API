@@ -1,9 +1,12 @@
-# Grievance Portal API
+# Grievance Portal
 
-A robust Node.js & Express API backend for a Civic Grievance/Complaint Portal. It allows citizens to register, submit, and track complaints while providing admins the ability to manage and resolve them.
+A full-stack Civic Grievance/Complaint Portal. It allows citizens to register, submit, and track complaints while providing admins the ability to manage and resolve them. This repository contains both the frontend UI and the Node.js/Express backend API.
+
+> **Note:** The frontend of this application was designed and generated entirely using AI tools like Claude!
 
 ## 🚀 Features
 
+- **Frontend UI**: Responsive HTML pages for Citizen Login, Registration, Complaint Tracking, and Admin Dashboard.
 - **Authentication & Authorization**: Secure JWT-based authentication for citizens and admins with bcrypt password hashing.
 - **Citizen Portal**: Citizens can register, log in, submit new grievances, and track the real-time status of their complaints using a unique Tracking ID.
 - **Admin Dashboard**: Role-based access control (RBAC) allows administrators to fetch all complaints and update their statuses (`Pending`, `InProgress`, `Resolved`).
@@ -11,13 +14,21 @@ A robust Node.js & Express API backend for a Civic Grievance/Complaint Portal. I
 
 ## 🛠️ Technology Stack
 
-- **Runtime**: Node.js
-- **Framework**: Express.js
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Backend Runtime**: Node.js
+- **Backend Framework**: Express.js
 - **Database**: PostgreSQL
-- **Authentication**: JSON Web Tokens (JWT)
-- **Password Hashing**: bcryptjs
+- **Authentication**: JSON Web Tokens (JWT) & bcryptjs
 
-## 📦 Installation & Setup
+## 📦 Project Structure
+
+```text
+grievance_portal/
+├── frontend/             # HTML, CSS, and JS files for the UI
+└── backend/              # Node.js/Express API and database configuration
+```
+
+## 💻 Installation & Setup
 
 ### 1. Prerequisites
 
@@ -27,19 +38,20 @@ A robust Node.js & Express API backend for a Civic Grievance/Complaint Portal. I
 ### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/bharatpatel-git/grievance_portal_API
-cd grievance_portal_API
+git clone https://github.com/bharatpatel-git/grievance_portal.git
+cd grievance_portal
 ```
 
-### 3. Install Dependencies
+### 3. Backend Setup
+
+Navigate to the backend directory, install dependencies, and configure your environment variables.
 
 ```bash
+cd backend
 npm install
 ```
 
-### 4. Environment Variables
-
-Create a `.env` file in the root directory and add the following configurations:
+Create a `.env` file in the **`backend`** directory and add the following configurations:
 
 ```env
 PORT=5000
@@ -51,7 +63,7 @@ DB_NAME=your_database_name
 JWT_SECRET=your_super_secret_jwt_key
 ```
 
-### 5. Database Setup
+### 4. Database Setup
 
 Create a PostgreSQL database and execute the following SQL commands to create the necessary tables:
 
@@ -90,42 +102,25 @@ INSERT INTO departments (department_name) VALUES
 ('Street lights & parks');
 ```
 
-### 6. Start the Server
+### 5. Start the Application
 
-For development (with hot-reload):
+**Start the Backend Server:**
+Inside the `backend` folder, run:
 
 ```bash
+# For development (with hot-reload):
 npm run dev
-```
 
-For production:
-
-```bash
+# For production:
 npm start
 ```
+_The API server should now be running at `http://localhost:5000`._
 
-_The server should now be running at `http://localhost:5000`._
+**Start the Frontend:**
+Simply navigate to the `frontend` directory and open the `index.html` file in your web browser. Alternatively, you can use a tool like VS Code's "Live Server" extension to serve the files locally.
 
 ---
 
 ## 📖 API Documentation
 
-For detailed endpoint documentation, request payloads, and response formats, please see the [API_DOCUMENTATION.md](./API_DOCUMENTATION.md) file included in this repository.
-
-### Quick Endpoint Overview:
-
-**Auth:**
-
-- `POST /api/auth/register` - Create a new citizen account
-- `POST /api/auth/login` - Authenticate and get JWT
-
-**Departments:**
-
-- `GET /api/departments` - List all departments
-
-**Complaints:**
-
-- `POST /api/complaints` - Submit a complaint (Requires Auth)
-- `GET /api/complaints/track/:trackingNumber` - Track complaint status (Public)
-- `GET /api/complaints` - Get all complaints (Admin Only)
-- `PATCH /api/complaints/:id/status` - Update complaint status (Admin Only)
+For detailed endpoint documentation, request payloads, and response formats, please see the [API_DOCUMENTATION.md](./backend/API_DOCUMENTATION.md) file included in the backend directory.
