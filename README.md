@@ -1,8 +1,18 @@
-# Grievance Portal
+# 🏛️ Jan Sampark - Grievance Portal
 
-A full-stack Civic Grievance/Complaint Portal. It allows citizens to register, submit, and track complaints while providing admins the ability to manage and resolve them. This repository contains both the frontend UI and the Node.js/Express backend API.
+**Live Demo:** [https://grievance-frontend.netlify.app](https://grievance-frontend.netlify.app)
 
-> **Note:** The frontend of this application was designed and generated entirely using AI tools like Claude!
+A complete, full-stack Civic Grievance & Complaint Management Portal designed to bridge the gap between citizens and city administration. This platform allows citizens to easily register, submit, and track their civic complaints in real-time. It also provides administrators with a powerful, role-based dashboard to securely manage and resolve these grievances across various city departments.
+
+This repository is a monorepo containing both the vanilla HTML/JS frontend UI and the robust Node.js/Express backend API.
+
+> **Note:** The frontend UI of this application was designed and generated entirely using AI tools like Claude!
+
+## 🌐 Live Deployment
+
+- **Frontend:** Hosted on Netlify
+- **Backend API:** Hosted on Render
+- **Database:** Supabase (PostgreSQL)
 
 ## 🚀 Features
 
@@ -114,6 +124,7 @@ npm run dev
 # For production:
 npm start
 ```
+
 _The API server should now be running at `http://localhost:5000`._
 
 **Start the Frontend:**
